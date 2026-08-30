@@ -4,12 +4,12 @@ aiosignal==1.4.0
 attrs==26.1.0
 bleak==3.0.2
 cffi==2.1.1
-cryptography==50.0.0
+cryptography==50.0.1
 dbus-fast==5.0.22
 frozenlist==1.8.0
-idna==3.18
+idna==3.19
 mautrix==0.21.1
-meshcore==2.3.8
+meshcore==2.3.9.1
 multidict==6.7.1
 propcache==0.5.2
 pycayennelpp==2.4.0
@@ -17,5 +17,5 @@ pycparser==3.0
 pycryptodome==3.23.0
 pyserial==3.5
 pyserial-asyncio-fast==0.16
-python-dotenv==1.2.2
+python-dotenv==1.2.3
 yarl==1.24.5

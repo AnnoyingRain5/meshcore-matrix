@@ -228,12 +228,23 @@ async def main():
         id="meshcore",
     )
 
-    meshcore = await MeshCore.create_tcp(
-        os.environ.get("MESHCORE_HOST"),
-        os.environ.get("MESHCORE_PORT"),
-        False,
-        auto_reconnect=True,
-    )
+    match os.environ.get("MESHCORE_DEVICE_TYPE"):
+        case "TCP":
+            meshcore = await MeshCore.create_tcp(
+                os.environ.get("MESHCORE_HOST"),
+                os.environ.get("MESHCORE_PORT"),
+                False,
+                auto_reconnect=True,
+            )
+        case "SERIAL":
+            meshcore = await MeshCore.create_serial(
+                os.environ.get("MESHCORE_SERIAL_DEVICE"), auto_reconnect=True
+            )
+        case _:
+            print()
+            print("You must set MESHCORE_DEVICE_TYPE to TCP or SERIAL")
+            exit(1)
+
     for i in range(16):
         channel = await meshcore.commands.get_channel(i)
         if channel.payload["channel_name"] == "":
